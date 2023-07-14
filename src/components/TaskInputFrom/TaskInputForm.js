@@ -10,7 +10,7 @@ const TaskInputForm = props => {
 
   const getDataInForm = e => {
     console.log('title', title, 'text', text);
-    // props.addTaskHandler(title, text);
+    props.addTaskHandler(title, text);
     setTitle(null);
     setText(null);
   };

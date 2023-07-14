@@ -10,16 +10,19 @@ import {PERMISSIONS, request} from 'react-native-permissions';
 import {strings} from '../../services/localization/localization.service';
 
 const HomeScreen = props => {
+  const [count, setCount] = useState(0);
   useEffect(() => {
+    console.log('in useEffect');
     props.actions.getTasks();
-  });
+  }, [count]);
   const addTaskHandler = (title, text) => {
     const _id = uuidv4();
-    this.props.actions.addTask({
+    props.actions.addTask({
       id: _id,
       title: title,
       text: text,
     });
+    setCount(count + 1);
   };
   const checkPermission = () => {
     request(

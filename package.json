@@ -12,13 +12,13 @@
   "dependencies": {
     "@react-navigation/native": "^6.0.16",
     "@react-navigation/stack": "^6.3.8",
+    "@reduxjs/toolkit": "^1.9.5",
     "formik": "^2.2.9",
     "i18n-js": "^4.2.3",
     "native-base": "^3.4.28",
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-gesture-handler": "^2.10.1",
-    "react-native-get-random-values": "^1.9.0",
     "react-native-image-picker": "^5.4.0",
     "react-native-localize": "^3.0.0",
     "react-native-permissions": "^3.8.0",
@@ -26,9 +26,8 @@
     "react-native-screens": "^3.19.0",
     "react-native-vision-camera": "^2.15.4",
     "react-redux": "^8.0.5",
-    "redux": "^4.2.1",
     "redux-saga": "^1.2.3",
-    "uuid": "^9.0.0",
+    "uuid": "^3.3.2",
     "yup": "^1.1.1"
   },
   "devDependencies": {
@@ -46,10 +45,6 @@
     "metro-react-native-babel-preset": "0.73.9",
     "prettier": "^2.4.1",
     "react-test-renderer": "18.2.0",
-    "redux-devtools-extension": "^2.13.9",
     "typescript": "4.8.4"
-  },
-  "jest": {
-    "preset": "react-native"
   }
 }

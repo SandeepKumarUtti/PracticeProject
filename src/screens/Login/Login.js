@@ -3,6 +3,8 @@ import {Text, View} from 'react-native';
 import Input from '../../components/TextInput/Input';
 import style from './Login.style';
 import {Button} from 'native-base';
+import {connect} from 'react-redux';
+import {login, register} from '../../state/actions/login/loginActions';
 const LoginScreen = props => {
   const [userName, setUserName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -10,6 +12,22 @@ const LoginScreen = props => {
   const [password2, setPassword2] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
 
+  const [loginUserName, setLoginUserName] = useState(null);
+  const [loginPassword, setLoginPassword] = useState(null);
+  const userRegister = () => {
+    props.register({
+      userName: userName,
+      email: email,
+      password: password,
+      password2: password2,
+    });
+  };
+  const userLogin = () => {
+    props.login({
+      userName: loginUserName,
+      password: loginPassword,
+    });
+  };
   return (
     <View style={style.body}>
       <View style={style.main}>
@@ -35,7 +53,12 @@ const LoginScreen = props => {
             placeholder="ReEnter the Password"
             onChangeText={setPassword2}
           />
-          <Button size="lg" style={style.button}>
+          <Button
+            size="lg"
+            style={style.button}
+            onPress={() => {
+              userRegister();
+            }}>
             Register
           </Button>
         </View>
@@ -46,19 +69,22 @@ const LoginScreen = props => {
             Login
           </Text>
           <Input
-            value={email}
-            placeholder="Enter the Email"
-            onChangeText={setEmail}
+            value={loginUserName}
+            placeholder="Enter the UserName"
+            onChangeText={setLoginUserName}
           />
           <Input
-            value={password}
+            value={loginPassword}
             placeholder="Enter the Password"
-            onChangeText={setPassword}
+            onChangeText={setLoginPassword}
           />
           <Button
             size="lg"
             style={style.button}
-            onPress={() => props.navigation.navigate('Home')}>
+            onPress={() => {
+              userLogin();
+              props.navigation.navigate('Home');
+            }}>
             Login
           </Button>
         </View>
@@ -66,4 +92,16 @@ const LoginScreen = props => {
     </View>
   );
 };
-export default LoginScreen;
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => ({
+  login: payload => {
+    dispatch(login(payload));
+  },
+  register: payload => {
+    dispatch(register(payload));
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
