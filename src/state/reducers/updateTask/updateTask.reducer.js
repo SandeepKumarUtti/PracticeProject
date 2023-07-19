@@ -1,4 +1,4 @@
-import {ADDED_TASK} from '../../actions/taskActions/taskActions';
+import {UPDATED_TASK} from '../../actions/taskActions/taskActions';
 
 const initialState = {
   task: null,
@@ -6,10 +6,9 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case ADDED_TASK: {
+    case UPDATED_TASK: {
       return {
-        ...state,
-        task: action.payload,
+        state,
       };
     }
     default: {

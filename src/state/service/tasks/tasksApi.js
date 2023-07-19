@@ -15,7 +15,6 @@ export default {
       Posts.push(data);
       setTimeout(resolve(data), 1000);
     });
-    console.log('data', Posts);
   },
 
   update: async function (data) {

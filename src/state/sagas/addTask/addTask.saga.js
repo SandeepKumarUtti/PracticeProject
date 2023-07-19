@@ -7,9 +7,7 @@ export default function* addTaskWatcherSaga() {
 }
 function* addTaskWorker(action) {
   try {
-    console.log('saga worker', action.payload);
     const taskResponse = yield call(taskService.add, action.payload);
-    console.log('taskResponse', taskResponse);
     yield put({type: ADDED_TASK, payload: taskResponse});
   } catch (err) {
     console.log(err);
